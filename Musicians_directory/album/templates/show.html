@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+  
+
+
+<div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                
+                <th scope="col" class="px-6 py-3">ID</th>
+                <th scope="col" class="px-6 py-3">Musician Name</th>
+                <th scope="col" class="px-6 py-3">Email</th>
+                <th scope="col" class="px-6 py-3">Album Rating</th>
+                <th scope="col" class="px-6 py-3">Instrument Type</th>
+                <th scope="col" class="px-6 py-3">Album Name</th>
+                <th scope="col" class="px-6 py-3">Release Date</th>
+                <th scope="col" class="px-6 py-3">Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+           {% for d in data %}
+           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {{d.id}}
+            </th>
+            <td class="px-6 py-4">
+                {{d.musician}}
+            </td>
+            <td class="px-6 py-4">
+                {{d.musician.Email}}
+            </td>
+            <td class="px-6 py-4">
+                {{d.rating}}
+            </td>
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {{d.musician.InstrumentType}}
+            </th>
+            <td class="px-6 py-4">
+                {{d.AlbumName}}
+            </td>
+            <td class="px-6 py-4">
+                {{d.date}}
+            </td>
+            <td class="px-6 py-4">
+                <a  class="btn bg-red-300 m-1 p-1 rounded-lg" href="{% url 'delete' d.id %}">Delete</a>
+                <a  class="btn bg-red-500 m-1 p-1 rounded-lg" href="{% url 'edit' d.id %}">Edit</a>
+            </td>
+        </tr>
+
+           {% endfor%}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %} 
